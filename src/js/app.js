@@ -1,6 +1,16 @@
-// TODO: write your code here
-import sum from './basic';
+export default function getAttack(character) {
+    const result = [];
 
-console.log('worked');
+    const { special } = character;
 
-console.log(sum([1, 2]));
+    for (const item of special) {
+        if (Object.prototype.hasOwnProperty.call(item, 'description')) {
+            const itemUpdate = { ...item };
+            result.push(itemUpdate);
+        } else {
+            const itemUpdate = { ...item, description: "Описание недоступно" };
+            result.push(itemUpdate);
+        }
+    }
+    return result;
+}
